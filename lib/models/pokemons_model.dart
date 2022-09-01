@@ -12,3 +12,11 @@ class PokemonModel {
       required this.selected,
       required this.answer});
 }
+
+class RoundModel {
+  dynamic roundMap;
+
+  RoundModel({
+    required this.roundMap,
+  });
+}
