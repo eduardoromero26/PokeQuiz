@@ -1,6 +1,6 @@
 # Pokequiz
 
-Dictionary app made with flutter and provider. Connected to the Oxfords API.
+PokeQuiz App made with flutter and provider. Connected to the Pokemon API.
 
 # Home
 ## Screenshot
