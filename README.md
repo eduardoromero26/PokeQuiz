@@ -8,9 +8,9 @@ Dictionary app made with flutter and provider. Connected to the Oxfords API.
 ![Home](assets/home.png)
 
 
-## Wrong Answer
+## Incorrect Answer
 
-![Wrong Answer](assets/wrong_answer.png)
+![Incorrect Answer](assets/incorrect_answer.png)
 
 ## Correct Answer
 
