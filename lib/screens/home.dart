@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokequizz/providers/pokemon_provider.dart';
 import 'package:provider/provider.dart';
-import 'dart:math';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -20,8 +19,90 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   getCorrectAnswer(nameSelected) {
-    if (context.read<PokemonNotifier>().pokemonModel2?.answer == true &&
+    //case first pokemon
+    if (context.read<PokemonNotifier>().pokemonModel1?.answer == true &&
+        nameSelected == context.read<PokemonNotifier>().pokemonModel1?.name) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Win"),
+          content: Text("This pokemon is ${nameSelected}"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+              child: Container(
+                color: Colors.amber,
+                padding: const EdgeInsets.all(14),
+                child: const Text(
+                  "Play Again",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else if (context.read<PokemonNotifier>().pokemonModel2?.answer == true &&
         nameSelected == context.read<PokemonNotifier>().pokemonModel2?.name) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Win"),
+          content: Text("This pokemon is ${nameSelected}"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+              child: Container(
+                color: Colors.amber,
+                padding: const EdgeInsets.all(14),
+                child: const Text(
+                  "Play Again",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else if (context.read<PokemonNotifier>().pokemonModel3?.answer == true &&
+        nameSelected == context.read<PokemonNotifier>().pokemonModel3?.name) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Win"),
+          content: Text("This pokemon is ${nameSelected}"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+              child: Container(
+                color: Colors.amber,
+                padding: const EdgeInsets.all(14),
+                child: const Text(
+                  "Play Again",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else if (context.read<PokemonNotifier>().pokemonModel1?.answer == true &&
+        nameSelected == context.read<PokemonNotifier>().pokemonModel1?.name) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -76,13 +157,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: context.watch<PokemonNotifier>().loading
+      body: context.watch<PokemonNotifier>().pokemonModel5?.imgUrl == '' ||
+              context.watch<PokemonNotifier>().pokemonModel5?.imgUrl == null
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/pokemon_logo.png',
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Image.asset(
+                      'assets/pokemon_logo.png',
+                    ),
                   ),
                   const SizedBox(
                     height: 8,
@@ -100,9 +185,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PokeQuiz'),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.replay_outlined))
-        ],
       ),
       body: Center(
         child: Padding(
@@ -110,10 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.network(
-                context.watch<PokemonNotifier>().pokemonModel2?.imgUrl,
-                scale: .5,
-              ),
+              context.watch<PokemonNotifier>().pokemonModel5 != null
+                  ? Image.network(
+                      context.watch<PokemonNotifier>().pokemonModel5?.imgUrl,
+                      scale: .6,
+                    )
+                  : Container(),
               const SizedBox(
                 height: 16,
               ),

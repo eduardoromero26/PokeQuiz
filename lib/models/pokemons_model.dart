@@ -1,9 +1,9 @@
 class PokemonModel {
   final id;
   final name;
-  final imgUrl;
+  var imgUrl;
   final selected;
-  final answer;
+  bool answer;
 
   PokemonModel(
       {required this.id,

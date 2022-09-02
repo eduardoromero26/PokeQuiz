@@ -7,7 +7,6 @@ import '../utils/constants.dart';
 class SearchPokemonDataServices {
   Future<Map> getPokemonDataFromApi() async {
     int randomNum = Random().nextInt(151);
-    print(randomNum);
 
     try {
       var resp = await http.get(
@@ -17,7 +16,6 @@ class SearchPokemonDataServices {
             'Accept': 'application/json',
           });
       var data = jsonDecode(resp.body);
-      print(data);
       // Validations
       return data;
     } catch (e) {
